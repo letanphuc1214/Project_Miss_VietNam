@@ -2,7 +2,7 @@ blogs = {} || blogs;
 blogs.intTable = function (){
     $("#blogs-datatables").DataTable({
         ajax: {
-            url: 'http://localhost:8080/api/blogsDeleted/',
+            url: 'https://missvietnam.herokuapp.com/api/blogsDeleted/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -47,7 +47,7 @@ blogs.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/blogDeleted/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/blogDeleted/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -79,7 +79,7 @@ blogs.undo = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/blogUndo/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/blogUndo/' + id,
                     method: 'PUT',
                     dataType: 'json',
                     dataSrc: '',

@@ -2,7 +2,7 @@ var provinces = {}|| provinces;
 provinces.intTable = function (){
     $("#provinces-datatables").dataTable({
         ajax:{
-            url: 'http://localhost:8080/api/provincesDeleted/',
+            url: 'https://missvietnam.herokuapp.com/api/provincesDeleted/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -42,7 +42,7 @@ provinces.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/provinceDeleted/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/provinceDeleted/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -73,7 +73,7 @@ provinces.undo = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/provinceUndo/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/provinceUndo/' + id,
                     method: 'PUT',
                     dataType: 'json',
                     success: function (){

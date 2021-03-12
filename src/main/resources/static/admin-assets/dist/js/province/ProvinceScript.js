@@ -2,7 +2,7 @@ var provinces = {}|| provinces;
 provinces.intTable = function (){
     $("#provinces-datatables").dataTable({
         ajax:{
-            url: 'http://localhost:8080/api/provinces/',
+            url: 'https://missvietnam.herokuapp.com/api/provinces/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -42,7 +42,7 @@ provinces.save = function (){
             var provinceObj = {};
             provinceObj.provinceName = $('#provinceName').val();
             $.ajax({
-                url: 'http://localhost:8080/api/province/',
+                url: 'https://missvietnam.herokuapp.com/api/province/',
                 method: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -66,7 +66,7 @@ provinces.save = function (){
             provinceObj.provinceName = $('#provinceName').val();
             provinceObj.id = $('#id').val();
             $.ajax({
-                url: 'http://localhost:8080/api/province/',
+                url: 'https://missvietnam.herokuapp.com/api/province/',
                 method: 'PUT',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -103,7 +103,7 @@ provinces.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/province/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/province/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -121,7 +121,7 @@ provinces.delete = function (id){
 }
 provinces.get = function (id){
     $.ajax({
-        url: 'http://localhost:8080/api/province/' + id,
+        url: 'https://missvietnam.herokuapp.com/api/province/' + id,
         method: 'GET',
         dataType: 'json',
         success: function (data){

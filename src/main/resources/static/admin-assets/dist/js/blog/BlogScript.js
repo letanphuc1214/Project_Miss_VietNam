@@ -2,7 +2,7 @@ var blogs = {} || blogs;
 blogs.intTable = function () {
     $("#blogs-datatables").DataTable({
         ajax: {
-            url: "http://localhost:8080/api/blogs/",
+            url: "https://missvietnam.herokuapp.com/api/blogs/",
             method: "GET",
             dataType: "json",
             dataSrc: "",
@@ -53,7 +53,7 @@ blogs.save = function () {
         blogObj.contentShort = $('#contentShort').val();
         blogObj.content = $('#content').val();
         $.ajax({
-            url: 'http://localhost:8080/api/blog/',
+            url: 'https://missvietnam.herokuapp.com/api/blog/',
             method: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -97,7 +97,7 @@ blogs.update = function () {
         blogObj.dateAdd = $('#dateAdd').val();
         console.log(blogObj);
         $.ajax({
-            url: 'http://localhost:8080/api/blog/',
+            url: 'https://missvietnam.herokuapp.com/api/blog/',
             method: 'PUT',
             dataType: 'json',
             contentType: 'application/json',

@@ -4,7 +4,7 @@ var blogs = {} || blogs;
 //wife
 blogs.blogCarousel = function (){
     $.ajax({
-        url: 'http://localhost:8080/api/lastestBlogs/',
+        url: 'https://missvietnam.herokuapp.com/api/lastestBlogs/',
         method: 'GET',
         dataType: 'json',
         success: function (data){

@@ -2,7 +2,7 @@ var ethnicitys = {}|| ethnicity;
 ethnicitys.intTable = function (){
     $('#ethnicities-datatables').DataTable({
         ajax:{
-            url: 'http://localhost:8080/api/ethnicitiesDeleted/',
+            url: 'https://missvietnam.herokuapp.com/api/ethnicitiesDeleted/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -42,7 +42,7 @@ ethnicitys.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/ethnicityDeleted/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/ethnicityDeleted/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -74,7 +74,7 @@ ethnicitys.undo = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/ethnicityUndo/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/ethnicityUndo/' + id,
                     method: 'PUT',
                     dataType: 'json',
                     success: function (){

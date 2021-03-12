@@ -3,7 +3,7 @@ var candidates = {} || candidates;
 //Trang chủ hiển thị danh sách 10 thí sinh đã đăng ký
 candidates.registeredList = function (){
     $.ajax({
-        url: 'http://localhost:8080/api/lastestCandidates/',
+        url: 'https://missvietnam.herokuapp.com/api/lastestCandidates/',
         method: 'GET',
         dataType: 'json',
         success: function (data){
@@ -36,7 +36,7 @@ candidates.registeredList = function (){
 //Trang chủ: hiển thị danh sách 10 thí sinh đã duyệt
 candidates.listCandidateSuccess = function (){
     $.ajax({
-        url: 'http://localhost:8080/api/lastestCandidateSuccess/',
+        url: 'https://missvietnam.herokuapp.com/api/lastestCandidateSuccess/',
         method: 'GET',
         dataType: 'json',
         success: function (data){
@@ -71,7 +71,7 @@ candidates.listAllCandidate = function (){
     var id;
     $("#candidate-datatables").DataTable({
         ajax: {
-            url: 'http://localhost:8080/api/candidateRegistered/',
+            url: 'https://missvietnam.herokuapp.com/api/candidateRegistered/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -137,7 +137,7 @@ candidates.listAllCandidateSuccess = function () {
     var id;
     $("#candidate-datatables1").DataTable({
         ajax: {
-            url: 'http://localhost:8080/api/candidateRegisteredSuccess/',
+            url: 'https://missvietnam.herokuapp.com/api/candidateRegisteredSuccess/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -222,7 +222,7 @@ candidates.register = function (){
         candidate.province = provinces.findById(parseInt($('#province').val()));
         console.log(candidate);
         $.ajax({
-            url: 'http://localhost:8080/api/candidate/',
+            url: 'https://missvietnam.herokuapp.com/api/candidate/',
             method: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -256,7 +256,7 @@ var provinces = provinces || {};
 var provinceData = [];
 provinces.initProvince = function () {
     $.ajax({
-        url: 'http://localhost:8080/api/provinces/',
+        url: 'https://missvietnam.herokuapp.com/api/provinces/',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -282,7 +282,7 @@ var ethnicities = ethnicities || {};
 var ethnicityData = [];
 ethnicities.initEthnicity = function () {
     $.ajax({
-        url: 'http://localhost:8080/api/ethnicities/',
+        url: 'https://missvietnam.herokuapp.com/api/ethnicities/',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -307,7 +307,7 @@ var educations = educations || {};
 var educationData = [];
 educations.initEducation = function () {
     $.ajax({
-        url: 'http://localhost:8080/api/educations/',
+        url: 'https://missvietnam.herokuapp.com/api/educations/',
         method: 'GET',
         dataType: 'json',
         success: function (data) {

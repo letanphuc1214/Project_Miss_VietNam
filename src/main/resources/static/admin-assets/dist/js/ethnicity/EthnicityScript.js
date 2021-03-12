@@ -2,7 +2,7 @@ var ethnicitys = {}|| ethnicity;
 ethnicitys.intTable = function (){
     $('#ethnicities-datatables').DataTable({
         ajax:{
-            url: 'http://localhost:8080/api/ethnicities/',
+            url: 'https://missvietnam.herokuapp.com/api/ethnicities/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -43,7 +43,7 @@ ethnicitys.save = function (){
             var ethnicityObj = {};
             ethnicityObj.ethnicityName = $("#ethnicityName").val();
             $.ajax({
-                url: 'http://localhost:8080/api/ethnicity/',
+                url: 'https://missvietnam.herokuapp.com/api/ethnicity/',
                 method: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -67,7 +67,7 @@ ethnicitys.save = function (){
             ethnicityObj.ethnicityName = $("#ethnicityName").val();
             ethnicityObj.id = $("#id").val();
             $.ajax({
-                url: 'http://localhost:8080/api/ethnicity/',
+                url: 'https://missvietnam.herokuapp.com/api/ethnicity/',
                 method: 'PUT',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -103,7 +103,7 @@ ethnicitys.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/ethnicity/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/ethnicity/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -121,7 +121,7 @@ ethnicitys.delete = function (id){
 
 ethnicitys.get = function (id){
     $.ajax({
-        url: 'http://localhost:8080/api/ethnicity/' + id,
+        url: 'https://missvietnam.herokuapp.com/api/ethnicity/' + id,
         method: 'GET',
         dataType: 'json',
         success: function (data){

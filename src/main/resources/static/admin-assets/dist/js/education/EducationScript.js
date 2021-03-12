@@ -3,7 +3,7 @@ var educations = {} || educations
 educations.intTable = function (){
     $('#educations-datatables').DataTable({
         ajax: {
-            url: 'http://localhost:8080/api/educations/',
+            url: 'https://missvietnam.herokuapp.com/api/educations/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -43,7 +43,7 @@ educations.save = function (){
             var educationObj = {};
             educationObj.educationName = $("#educationName").val();
             $.ajax({
-                url: "http://localhost:8080/api/education/",
+                url: "https://missvietnam.herokuapp.com/api/education/",
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json",
@@ -67,7 +67,7 @@ educations.save = function (){
             educationObj.educationName = $("#educationName").val();
             educationObj.id = $("#id").val();
             $.ajax({
-                url: "http://localhost:8080/api/education/",
+                url: "https://missvietnam.herokuapp.com/api/education/",
                 method: 'PUT',
                 dataType: "json",
                 contentType: "application/json",
@@ -103,7 +103,7 @@ educations.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/education/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/education/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -121,7 +121,7 @@ educations.delete = function (id){
 
 educations.get = function (id){
     $.ajax({
-        url: 'http://localhost:8080/api/education/' + id,
+        url: 'https://missvietnam.herokuapp.com/api/education/' + id,
         method: 'GET',
         dataType: 'json',
         success: function (data){

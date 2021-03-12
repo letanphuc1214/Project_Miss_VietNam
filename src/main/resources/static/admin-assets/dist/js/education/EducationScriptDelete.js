@@ -3,7 +3,7 @@ var educations = {} || educations
 educations.intTable = function (){
     $('#educations-datatables').DataTable({
         ajax: {
-            url: 'http://localhost:8080/api/educationsDeleted/',
+            url: 'https://missvietnam.herokuapp.com/api/educationsDeleted/',
             method: 'GET',
             dataType: 'json',
             dataSrc: '',
@@ -43,7 +43,7 @@ educations.delete = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/educationDeleted/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/educationDeleted/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function (){
@@ -75,7 +75,7 @@ educations.undo = function (id){
         callback: function (result){
             if (result){
                 $.ajax({
-                    url: 'http://localhost:8080/api/educationUndo/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/educationUndo/' + id,
                     method: 'PUT',
                     dataType: 'json',
                     success: function (){
