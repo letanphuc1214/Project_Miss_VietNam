@@ -22,16 +22,6 @@ candidates.intTable = function () {
                 },
             },
             {
-                data: "avatar",
-                name: "avatar",
-                title: "Ảnh",
-                visible: false,
-                "render": function (data){
-                    avatar = data;
-                    return avatar;
-                },
-            },
-            {
                 data: "fullName",
                 name: "fullname",
                 title: "Họ và tên",
@@ -41,7 +31,6 @@ candidates.intTable = function () {
                     // var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>"
                     var str = `<div>
                                         <a href="javascript:" onclick="candidates.getCandidateDelete(${id})" title="Xem thông tin">
-                                            <img src="${avatar}" class="avatar">
                                             ${data}
                                         </a>
                                   </div>`;

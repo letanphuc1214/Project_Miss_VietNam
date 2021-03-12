@@ -94,7 +94,7 @@
                     <div class="info" sec:authorize="isAuthenticated()" style="padding: 5px 5px 5px 20px!important;">
                         <!--                    <a href="#" class="d-block">${username}</a>-->
                         <span>
-                        <span style="font-size: 25px" sec:authentication="principal.username"></span>
+                        <span style="font-size: 25px; color: #ffffff" sec:authentication="principal.username"></span>
                             <span sec:authorize="hasRole('ADMIN')">
                                 <input type="hidden" name="role" value="ADMIN" id="role">
                             </span>
