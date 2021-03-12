@@ -158,7 +158,7 @@ blogs.delete = function () {
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: 'http://localhost:8080/api/blog/' + id,
+                    url: 'https://missvietnam.herokuapp.com/api/blog/' + id,
                     method: 'DELETE',
                     dataType: 'json',
                     success: function () {
