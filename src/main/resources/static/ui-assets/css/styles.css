@@ -476,6 +476,11 @@ mark,
   height: auto;
 }
 
+.info-right{
+  max-width: 80% !important;
+  height: 90vh !important;
+}
+
 .figure {
   display: inline-block;
 }
@@ -10127,7 +10132,7 @@ p {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 2rem 0;
 }
 .page-section h2.section-heading {
   font-size: 2.5rem;
@@ -10535,7 +10540,7 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-weight: 400;
   color: #070707;
   text-transform: uppercase;
-  margin: 20px 0;
+  margin: 35px 0;
   text-align: center;
 }
 
@@ -10583,7 +10588,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   }
 }
 footer .copyright {
-  padding-top: 15px;
+  padding-top: 40px;
+  font-size: 15px;
 }
 
 @media (min-width: 1200px) {
@@ -10601,4 +10607,18 @@ footer .copyright {
   color: white;
   /*background-color: blue;*/
   font-size: 35px;
+}
+
+.nav-menu{
+  padding-bottom: 0.5rem !important;
+  padding-top: 0.5rem !important;
+}
+
+.info-left{
+  padding-left: 2rem;
+  padding-top: 0.1rem;
+}
+
+.info-left h6, h5{
+  font-size: 1.5rem;
 }

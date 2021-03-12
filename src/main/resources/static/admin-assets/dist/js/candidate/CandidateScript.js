@@ -12,9 +12,23 @@ candidates.intTable = function () {
             },
             columns: [
                 {
-                    data: "id", name: "ID", title: "ID", orderable: true, "render": function (data) {
+                    data: "id",
+                    name: "ID",
+                    title: "ID",
+                    orderable: true,
+                    "render": function (data) {
                         id = data;
                         return id;
+                    },
+                },
+                {
+                    data: "avatar",
+                    name: "avatar",
+                    title: "Ảnh",
+                    visible: false,
+                    "render": function (data){
+                        avatar = data;
+                        return avatar;
                     },
                 },
                 {
@@ -24,7 +38,13 @@ candidates.intTable = function () {
                     orderable: false,
                     sortable: true,
                     "render": function (data) {
-                        var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>";
+                        // var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>"
+                        var str = `<div>
+                                        <a href="javascript:" onclick="candidates.get(this.title, ${id})" title="Xem thông tin">
+                                            <img src="${avatar}" class="avatar">
+                                            ${data}
+                                        </a>
+                                  </div>`;
                         return str;
                     },
                 },
@@ -84,7 +104,7 @@ candidates.addNew = function () {
     $("#modalTitle").html('Thêm mới thí sinh');
     $(".form-control").removeAttr('disable');
     $('#imageHtml').html(
-        `<img id='output' height="150px" width="100px">
+        `<img id='output' style="height: 65vh; width: 50vh">
                <input class="form-control" type='file' accept='image/*' onchange='openFile(event)' name="fileUpdate" data-rule-required=true ><br>`
     );
     $("#save").show();
@@ -232,18 +252,18 @@ candidates.get = function (title, id) {
                 $("#save").show();
                 $("#base64").val(data.avatar);
                 $('#imageHtml').html(
-                    `<img id='output' height="150px" width="100px" src="${data.avatar}">
+                    `<img id='output' class="form-control" style="height: 65vh; width: 50vh"  src="${data.avatar}">
                             <input class="form-control" type='file' accept='image/*' onchange='openFile(event)' name="fileUpdate" ><br>`
                 );
-            };
+            }
             if (title === "Xem thông tin") {
                 $("#modalTitle").html('Thông tin chi tiết thí sinh');
                 $('#imageHtml').html(
                     `<img class="form-control" src="${data.avatar}"
-                           name="image" id="image" style="width: 210px;height: 260px">`
+                           name="image" id="image" style="height: 65vh; width: 50vh">`
                 );
                 $("#save").hide();
-                $('.form-control').attr('disabled', 'disabled');
+                // $('.form-control').attr('disabled', 'disabled');
             }
             $("#id").val(data.id);
             $("#fullname").val(data.fullName);
@@ -379,13 +399,13 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateResidentialAddress: true,
             },
             contactaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateContactAddress: true,
             },
@@ -406,7 +426,7 @@ candidates.validation = function (){
             },
             job: {
                 required: true,
-                minlength: 2,
+                minlength: 3,
                 maxlength: 45,
                 validateJob: true,
             },
@@ -418,7 +438,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 validateWorkUnit: true,
             },
@@ -456,12 +476,12 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: 'Địa chỉ cư trú không được để trống',
-                minlength: 'Địa chỉ cư trú không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ cư trú không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ cư trú không được dài hơn 200 kí tự',
             },
             contactaddress: {
                 required: 'Địa chỉ liên lạc không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 200 kí tự',
             },
             phone: {
@@ -478,7 +498,7 @@ candidates.validation = function (){
             },
             job: {
                 required: 'Nghề nghiệp không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 2 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 45 kí tự',
             },
             educationlv: {
@@ -489,7 +509,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: 'Đơn vị công tác không được để trống',
-                minlength: 'Đơn vị công tác không được ít hơn 1 kí tự',
+                minlength: 'Đơn vị công tác không được ít hơn 3 kí tự',
                 maxlength: 'Đơn vị công tác không được dài hơn 200 kí tự',
             },
             height: {
@@ -526,7 +546,7 @@ candidates.getAge = function (data) {
         age--;
     }
     if (age < 18 || age > 27) {
-        return null
+        return null;
     }
     return data;
 }
@@ -562,12 +582,12 @@ candidates.status = function (id) {
 }
 
 $.validator.addMethod('validateFullName', function (value, element){
-    return this.optional(element) || /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/i.test(value);
+    return this.optional(element) || /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s|_]+$/i.test(value);
 }, 'Họ và tên không đúng định dạng');
 
-$.validator.addMethod('validateDateOfBirth', function (value, element){
-    return this.optional(element) || i.test(value);
-}, 'Tuổi phải từ 18 đến 27 tuổi');
+// $.validator.addMethod('validateDateOfBirth', function (value, element){
+//     return this.optional(element) || i.test(value);
+// }, 'Tuổi phải từ 18 đến 27 tuổi');
 
 // $.validator.addMethod('validateResidentialAddress', function (value, element){
 //     return this.optional(element) || /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/i.test(value);
@@ -582,7 +602,7 @@ $.validator.addMethod('validatePhone', function (value, element){
 }, 'Số điện thoại không đúng định dạng');
 
 $.validator.addMethod('validateEmail', function (value, element){
-    return this.optional(element) || /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/i.test(value);
+    return this.optional(element) || /^[a-z][a-z0-9_\.]{3,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/i.test(value);
 }, 'Email không đúng định dạng');
 
 $.validator.addMethod('validateIdCard', function (value, element){

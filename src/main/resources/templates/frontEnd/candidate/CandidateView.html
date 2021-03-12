@@ -86,17 +86,17 @@
             <div class="col-sm-7">
                 <h2>Thông tin <b>Thí sinh</b></h2>
             </div>
-            <div class="col-sm-5">
-                <button class="btn btn-secondary" onclick="history.back()">Trở lại </button>
-<!--                <a href="/" class="btn btn-secondary">-->
-<!--                    <span>Trở lại</span></a>-->
-            </div>
+<!--            <div class="col-sm-5">-->
+<!--                <button class="btn btn-secondary" onclick="history.back()">Trở lại </button>-->
+<!--&lt;!&ndash;                <a href="/" class="btn btn-secondary">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span>Trở lại</span></a>&ndash;&gt;-->
+<!--            </div>-->
         </div>
         <div class="row">
             <div class="col-sm-7 col">
-                <img class="img-thumbnail" th:src="${candidate.avatar}" alt="anh" width="100%">
+                <img class="img-thumbnail info-right" th:src="${candidate.avatar}" alt="anh" width="100%">
             </div>
-            <div class="col-sm-5 ">
+            <div class="col-sm-5 info-left">
                 <h6 class="text-success">Họ tên Thí sinh:</h6>
                 <h5 class="text-danger" th:text="${candidate.fullName}"></h5>
                 <h6 class="text-success">Ngày sinh:</h6>
@@ -111,6 +111,7 @@
                 <h5 class="text-danger" th:text="${candidate.workUnit}"></h5>
                 <h6 class="text-success">Đại diện tỉnh thành:</h6>
                 <h5 class="text-danger" th:text="${candidate.province.provinceName}"></h5>
+                <button class="btn btn-secondary" onclick="history.back()">Trở lại</button>
             </div>
         </div>
     </div>

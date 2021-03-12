@@ -22,13 +22,29 @@ candidates.intTable = function () {
                 },
             },
             {
+                data: "avatar",
+                name: "avatar",
+                title: "Ảnh",
+                visible: false,
+                "render": function (data){
+                    avatar = data;
+                    return avatar;
+                },
+            },
+            {
                 data: "fullName",
                 name: "fullname",
                 title: "Họ và tên",
                 orderable: false,
                 sortable: true,
                 "render": function (data) {
-                    var str = "<div><a href='javascript:' onclick='candidates.getCandidateDelete("+id+")' title='Xem thông tin'>" + data + "</a></div>";
+                    // var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>"
+                    var str = `<div>
+                                        <a href="javascript:" onclick="candidates.getCandidateDelete(${id})" title="Xem thông tin">
+                                            <img src="${avatar}" class="avatar">
+                                            ${data}
+                                        </a>
+                                  </div>`;
                     return str;
                 },
             },
@@ -172,9 +188,9 @@ candidates.getCandidateDelete = function (id){
             $('#province').val(data.province.id);
             $('#imageHtml').html(
                 `<img class="form-control" src="${data.avatar}"
-                           name="image" id="image" style="width: 210px;height: 260px">`
+                           name="image" id="image" style="width: 50vh;height: 65vh">`
             );
-            $('.form-control').attr('disabled', 'disabled');
+            // $('.form-control').attr('disabled', 'disabled');
             $('#modalAddEdit').modal('show');
         }
     });

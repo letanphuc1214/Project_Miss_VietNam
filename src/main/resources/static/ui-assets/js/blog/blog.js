@@ -35,17 +35,21 @@ blogs.blogCarousel = function (){
 }
 
 //Trang chủ: Xem bài viết chi tiết
-blogs.viewBlog = function (){
-    var id = $("#id").val();
-    $.ajax({
-        url: 'http://localhost:8080/api/blog/' + id,
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            $("#viewBlogs").append(data.content);
-        }
-    });
-}
+// blogs.viewBlog = function (id){
+//     // var id = $("#id").val();
+//     $.ajax({
+//         url: 'http://localhost:8080/api/blogView/' + id,
+//         method: 'GET',
+//         dataType: 'json',
+//         success: function (data) {
+//             $("#viewBlogs").append(
+//                 `<div class="entry-header">
+//
+//                  </div>`
+//             );
+//         }
+//     });
+// }
 
 //Trang chủ: Hiển thị tất cả bài viết
 //Husband
@@ -71,5 +75,4 @@ blogs.listBlog=function(data){
 
 $(document).ready(function (){
     blogs.blogCarousel();
-    blogs.viewBlog();
 })

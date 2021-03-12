@@ -130,10 +130,18 @@ public class ApiBlogController {
         return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
     }
 
+    //Trang chủ: Hiển thị tất cả bài viết.
     @RequestMapping(value = "/newAllBlogs/", method = RequestMethod.GET)
     public ResponseEntity<List<Blog>> listAllBlog(){
         List<Blog> blogs = blogService.listAllBlog();
         return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
+    }
+
+    //Trang chủ: Xem chi tiết bài viết
+    @RequestMapping(value = "/blogView/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Blog> blogView(@PathVariable("id") Long id){
+        Blog blog = blogService.blogView(id);
+        return new ResponseEntity<Blog>(blog, HttpStatus.OK);
     }
 
 }

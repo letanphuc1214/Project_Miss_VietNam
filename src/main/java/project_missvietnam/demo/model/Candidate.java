@@ -29,18 +29,18 @@ public class Candidate {
     @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$",message = "Họ và tên không phù hợp")
     private String fullName;
 
-    @NotNull (message = "Ngày sinh không phù hợp")
+    @NotNull (message = "Tuổi phải từ 18 tuổi đến 27 tuổi")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
 
 
     @NotNull
-    @Size(min = 1, max = 200, message = "Địa chỉ cư trú không được ít hơn 1 kí tự hoặc dài hơn 200 kí tự")
+    @Size(min = 3, max = 200, message = "Địa chỉ cư trú không được ít hơn 3 kí tự hoặc dài hơn 200 kí tự")
 //    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$",message = "Địa chỉ cư trú không phù hợp")
     private String residentialAddress;
 
     @NotNull
-    @Size(min = 1, max = 200, message = "Địa chỉ liên lạc không được ít hơn 1 kí tự hoặc dài hơn 200 kí tự")
+    @Size(min = 3, max = 200, message = "Địa chỉ liên lạc không được ít hơn 3 kí tự hoặc dài hơn 200 kí tự")
 //    @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$",message = "Địa chỉ liên lạc không phù hợp")
     private String contactAddress;
 
@@ -58,12 +58,12 @@ public class Candidate {
     private String idCard;
 
     @NotNull
-    @Size(min = 2, max = 45, message = "Nghề nghiệp không được ít hơn 2 kí tự hoặc dài hơn 45 kí tự")
+    @Size(min = 3, max = 45, message = "Nghề nghiệp không được ít hơn 3 kí tự hoặc dài hơn 45 kí tự")
     @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$",message = "Nghề nghiệp không phù hợp")
     private String job;
 
     @NotNull
-    @Size(min = 1, max = 200, message = "Đơn vị công tác không được ít hơn 1 kí tự hoặc dài hơn 200 kí tự")
+    @Size(min = 3, max = 200, message = "Đơn vị công tác không được ít hơn 3 kí tự hoặc dài hơn 200 kí tự")
     @Pattern(regexp = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$",message = "Đơn vị công tác không phù hợp")
     private String workUnit;
 

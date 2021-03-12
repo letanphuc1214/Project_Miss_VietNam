@@ -13,4 +13,6 @@ public interface BlogService extends BaseService<Blog>{
     List<Blog> listLastestBlogCarousel();
 
     List<Blog> listAllBlog();
+
+    Blog blogView(long id);
 }

@@ -23,6 +23,12 @@ public class AllController {
     @Autowired
     public CandidateService candidateService;
 
+    @GetMapping(value = "/admin")
+    public ModelAndView admin(){
+        ModelAndView modelAndView = new ModelAndView("admin/candidate/Candidate");
+        return modelAndView;
+    }
+
     @GetMapping(value = "/candidates")
     public ModelAndView listCandidate(){
         ModelAndView modelAndView = new ModelAndView("admin/candidate/Candidate");
@@ -191,10 +197,5 @@ public class AllController {
         return modelAndView;
     }
 
-//    @GetMapping(value = "/registers")
-//    public ModelAndView register(){
-//        ModelAndView modelAndView = new ModelAndView("frontEnd/register");
-//        return modelAndView;
-//    }
 
 }

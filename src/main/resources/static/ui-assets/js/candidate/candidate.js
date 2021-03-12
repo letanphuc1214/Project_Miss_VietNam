@@ -20,7 +20,7 @@ candidates.registeredList = function (){
                             </a>
                             <div class="portfolio-caption">
                                     <div class="portfolio-caption-heading">${v.fullName}</div>
-                                    <div class="portfolio-caption-subheading text-danger">${v.province.provinceName}</div>
+                                    <div class="portfolio-caption-subheading text-danger" style="font-size: 15px">${v.province.provinceName}</div>
                             </div>
                         </div>
                     </div>`
@@ -53,7 +53,7 @@ candidates.listCandidateSuccess = function (){
                             </a>
                             <div class="portfolio-caption">
                                     <div class="portfolio-caption-heading">${v.fullName}</div>
-                                    <div class="portfolio-caption-subheading text-danger">${v.province.provinceName}</div>
+                                    <div class="portfolio-caption-subheading text-danger" style="font-size: 15px">${v.province.provinceName}</div>
                             </div>
                         </div>
                     </div>`
@@ -379,13 +379,13 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateResidentialAddress: true,
             },
             contactaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateContactAddress: true,
             },
@@ -418,7 +418,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 validateWorkUnit: true,
             },
@@ -456,12 +456,12 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: 'Địa chỉ cư trú không được để trống',
-                minlength: 'Địa chỉ cư trú không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ cư trú không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ cư trú không được dài hơn 200 kí tự',
             },
             contactaddress: {
                 required: 'Địa chỉ liên lạc không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 200 kí tự',
             },
             phone: {
@@ -478,7 +478,7 @@ candidates.validation = function (){
             },
             job: {
                 required: 'Nghề nghiệp không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 2 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 45 kí tự',
             },
             educationlv: {
@@ -489,7 +489,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: 'Đơn vị công tác không được để trống',
-                minlength: 'Đơn vị công tác không được ít hơn 1 kí tự',
+                minlength: 'Đơn vị công tác không được ít hơn 3 kí tự',
                 maxlength: 'Đơn vị công tác không được dài hơn 200 kí tự',
             },
             height: {
@@ -557,16 +557,8 @@ $.validator.addMethod('validateGifted', function (value, element){
     return this.optional(element) || /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/i.test(value);
 }, 'Tên năng khiếu không đúng định dạng');
 
-// $(document).ready(function (){
-//     candidates.validation();
-//     provinces.initProvince();
-//     ethnicities.initEthnicity();
-//     educations.initEducation();
-// })
-
 
 $(document).ready(function (){
-
     candidates.registeredList();
     candidates.listCandidateSuccess();
     candidates.validation();

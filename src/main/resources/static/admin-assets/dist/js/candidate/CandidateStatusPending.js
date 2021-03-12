@@ -17,13 +17,29 @@ candidates.intTable = function () {
                 },
             },
             {
+                data: "avatar",
+                name: "avatar",
+                title: "Ảnh",
+                visible: false,
+                "render": function (data){
+                    avatar = data;
+                    return avatar;
+                },
+            },
+            {
                 data: "fullName",
                 name: "fullname",
                 title: "Họ và tên",
                 orderable: false,
                 sortable: true,
                 "render": function (data) {
-                    var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>";
+                    // var str = "<div><a href='javascript:' onclick='candidates.get(this.title," + id + ")' title='Xem thông tin'>" + data + "</a></div>"
+                    var str = `<div>
+                                        <a href="javascript:" onclick="candidates.get(this.title, ${id})" title="Xem thông tin">
+                                            <img src="${avatar}" class="avatar">
+                                            ${data}
+                                        </a>
+                                  </div>`;
                     return str;
                 },
             },
@@ -79,50 +95,6 @@ candidates.intTable = function () {
 
 candidates.save = function () {
     if ($("#formAddEdit").valid()) {
-        if ($("#id").val() == 0) {
-            var candidateObj = {};
-            candidateObj.fullName = $("#fullname").val().trim();
-
-            var age = candidates.getAge($("#dateofbirth").val());
-            candidateObj.dateOfBirth = age;
-
-            candidateObj.residentialAddress = $("#residentialaddress").val();
-            candidateObj.contactAddress = $("#contactaddress").val();
-            candidateObj.phone = $("#phone").val();
-            candidateObj.email = $("#email").val();
-            candidateObj.idCard = $("#idcard").val();
-            candidateObj.job = $("#job").val();
-            candidateObj.education = educations.findById(parseInt($("#educationlv").val()));
-            candidateObj.ethnicity = ethnicities.findById(parseInt($("#ethnicity").val()));
-            candidateObj.workUnit = $("#workunit").val();
-            candidateObj.height = $("#height").val();
-            candidateObj.weight = $("#weight").val();
-            candidateObj.gifted = $("#gifted").val();
-            candidateObj.avatar = $("#base64").val();
-            candidateObj.province = provinces.findById(parseInt($("#province").val()));
-            console.log(candidateObj);
-            $.ajax({
-                url: 'http://localhost:8080/api/candidate/',
-                method: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify(candidateObj),
-                done: function () {
-                    $("#modalAddEdit").modal('hide');
-                    $("#candidates-datatables").DataTable().ajax.reload();
-                },
-                success: function (data) {
-                    if (data.code === 2) {
-                        $("#modalAddEdit").modal('hide');
-                        $("#candidates-datatables").DataTable().ajax.reload();
-                        toastr.info('Thêm thí sinh thành công');
-
-                    } else {
-                        data.stringListMessage.map(e => toastr.error(e));
-                    }
-                }
-            });
-        } else {
             var candidateObj = {};
             candidateObj.fullName = $("#fullname").val().trim();
             candidateObj.dateOfBirth = $("#dateofbirth").val();
@@ -140,6 +112,7 @@ candidates.save = function () {
             candidateObj.gifted = $("#gifted").val();
             candidateObj.avatar = $("#base64").val();
             candidateObj.province = provinces.findById(parseInt($("#province").val()));
+            candidateObj.status = $("#status").val();
             candidateObj.id = $("#id").val();
             console.log(candidateObj);
             $.ajax({
@@ -160,7 +133,6 @@ candidates.save = function () {
             });
         }
         $("#formAddEdit").validate().resetForm();
-    }
 }
 
 candidates.delete = function (id) {
@@ -208,19 +180,18 @@ candidates.get = function (title, id) {
                 $("#save").show();
                 $("#base64").val(data.avatar);
                 $('#imageHtml').html(
-                    `<img id='output' height="150px" width="100px" src="${data.avatar}">
+                    `<img id='output' class="form-control" style="height: 65vh; width: 50vh"  src="${data.avatar}">
                             <input class="form-control" type='file' accept='image/*' onchange='openFile(event)' name="fileUpdate" ><br>`
                 );
             }
-            ;
             if (title === "Xem thông tin") {
                 $("#modalTitle").html('Thông tin chi tiết thí sinh');
                 $('#imageHtml').html(
                     `<img class="form-control" src="${data.avatar}"
-                           name="image" id="image" style="width: 210px;height: 260px">`
+                           name="image" id="image" style="height: 65vh; width: 50vh">`
                 );
                 $("#save").hide();
-                $('.form-control').attr('disabled', 'disabled');
+                // $('.form-control').attr('disabled', 'disabled');
             }
             $("#id").val(data.id);
             $("#fullname").val(data.fullName);
@@ -238,6 +209,7 @@ candidates.get = function (title, id) {
             $("#height").val(data.height);
             $("#weight").val(data.weight);
             $("#gifted").val(data.gifted);
+            $("#status").val(data.status);
             $("#province").val(data.province.id);
             $("#formAddEdit").validate().resetForm();
             $("#modalAddEdit").modal('show');
@@ -395,13 +367,13 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateResidentialAddress: true,
             },
             contactaddress: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 // validateContactAddress: true,
             },
@@ -422,7 +394,7 @@ candidates.validation = function (){
             },
             job: {
                 required: true,
-                minlength: 2,
+                minlength: 3,
                 maxlength: 45,
                 validateJob: true,
             },
@@ -434,7 +406,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: true,
-                minlength: 1,
+                minlength: 3,
                 maxlength: 200,
                 validateWorkUnit: true,
             },
@@ -472,12 +444,12 @@ candidates.validation = function (){
             },
             residentialaddress: {
                 required: 'Địa chỉ cư trú không được để trống',
-                minlength: 'Địa chỉ cư trú không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ cư trú không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ cư trú không được dài hơn 200 kí tự',
             },
             contactaddress: {
                 required: 'Địa chỉ liên lạc không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 1 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 200 kí tự',
             },
             phone: {
@@ -494,7 +466,7 @@ candidates.validation = function (){
             },
             job: {
                 required: 'Nghề nghiệp không được để trống',
-                minlength: 'Địa chỉ liên lạc không được ít hơn 2 kí tự',
+                minlength: 'Địa chỉ liên lạc không được ít hơn 3 kí tự',
                 maxlength: 'Địa chỉ liên lạc không được dài hơn 45 kí tự',
             },
             educationlv: {
@@ -505,7 +477,7 @@ candidates.validation = function (){
             },
             workunit: {
                 required: 'Đơn vị công tác không được để trống',
-                minlength: 'Đơn vị công tác không được ít hơn 1 kí tự',
+                minlength: 'Đơn vị công tác không được ít hơn 3 kí tự',
                 maxlength: 'Đơn vị công tác không được dài hơn 200 kí tự',
             },
             height: {

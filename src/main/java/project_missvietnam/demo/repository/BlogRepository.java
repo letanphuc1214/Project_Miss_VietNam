@@ -28,4 +28,9 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
             value = "select * from blogs where delete = false order by date_add", nativeQuery = true
     )
     List<Blog> listAllBlog();
+
+    @Query(
+            value = "select * from blogs where id=?1 and delete = false", nativeQuery = true
+    )
+    Blog blogView(long id);
 }
