@@ -20,17 +20,20 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
     Blog findBlogDelete(long id);
 
     @Query(
-            value = "select * from blogs where delete = false order by date_add desc limit 10", nativeQuery = true
+            value = "select * from blogs where delete = false order by date_add desc limit 10",
+            nativeQuery = true
     )
     List<Blog> listLastestBlogCarousel();
 
     @Query(
-            value = "select * from blogs where delete = false order by date_add", nativeQuery = true
+            value = "select * from blogs where delete = false order by date_add",
+            nativeQuery = true
     )
     List<Blog> listAllBlog();
 
     @Query(
-            value = "select * from blogs where id=?1 and delete = false", nativeQuery = true
+            value = "select * from blogs where id=?1 and delete = false",
+            nativeQuery = true
     )
     Blog blogView(long id);
 }

@@ -37,44 +37,52 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     List<Candidate> findAllCandidatesByPhoneEmailIdCard (String phone, String email, String idCard);
 
     @Query(
-            value = "select * from candidates where status='Bị loại' and delete =false", nativeQuery = true
+            value = "select * from candidates where status='Bị loại' and delete =false",
+            nativeQuery = true
     )
     List<Candidate> findAllCandidateStatusRemoved();
 
     @Query(
-            value = "select * from candidates where status='Đã duyệt' and delete =false", nativeQuery = true
+            value = "select * from candidates where status='Đã duyệt' and delete =false",
+            nativeQuery = true
     )
     List<Candidate> findAllCandidateStatusSuccess();
 
     @Query(
-            value = "select * from candidates where status='Chờ duyệt' and delete =false " , nativeQuery = true
+            value = "select * from candidates where status='Chờ duyệt' and delete =false " ,
+            nativeQuery = true
     )
     List<Candidate> findAllCandidateStatusPending();
 
     //Trang chủ
 
     @Query(
-            value = "select * from candidates where delete = false ", nativeQuery = true
+            value = "select * from candidates where delete = false ",
+            nativeQuery = true
     )
     List<Candidate> listAllCandidateRegisteredList();
 
     @Query(
-            value = "select * from candidates where status = 'Đã duyệt' and delete = false ", nativeQuery = true
+            value = "select * from candidates where status = 'Đã duyệt' and delete = false ",
+            nativeQuery = true
     )
     List<Candidate> listAllCandidateRegisteredListSuccess();
 
     @Query(
-            value = "select  * from candidates where delete = false order by id desc limit 10", nativeQuery = true
+            value = "select  * from candidates where delete = false order by id desc limit 10",
+            nativeQuery = true
     )
     List<Candidate> listNewTenCandidateRegister();
 
     @Query(
-            value = "select * from candidates where status='Đã duyệt' and delete =false order by id desc limit 10", nativeQuery = true
+            value = "select * from candidates where status='Đã duyệt' and delete =false order by id desc limit 10",
+            nativeQuery = true
     )
     List<Candidate> listNewTenCandidateRegisterSuccess();
 
     @Query(
-            value = "select * from candidates where id=?1 and delete = false", nativeQuery = true
+            value = "select * from candidates where id=?1 and delete = false",
+            nativeQuery = true
     )
     Candidate candidateView(long id);
 

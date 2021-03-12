@@ -20,6 +20,7 @@ public class EthnicityServiceImpl implements EthnicityService {
     @Autowired
     public CandidateRepository candidateRepository;
 
+    //admin ethnicity deleted
     @Override
     public List<Ethnicity> findAllEthnicityDeleted() {
         return ethnicityRepository.findAllEthnicityDeleted();
@@ -53,6 +54,8 @@ public class EthnicityServiceImpl implements EthnicityService {
         return false;
     }
 
+
+    //admin ethnicity
     @Override
     public List<Ethnicity> findAll() {
         return ethnicityRepository.findAll();

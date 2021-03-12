@@ -19,6 +19,7 @@ public class ProvinceServiceImpl implements ProvinceService {
     @Autowired
     public CandidateRepository candidateRepository;
 
+    //admin deleted
     @Override
     public List<Province> findAllProvinceDeleted() {
         return provinceRepository.findAllProvinceDeleted();
@@ -52,6 +53,7 @@ public class ProvinceServiceImpl implements ProvinceService {
         return false;
     }
 
+    //admin province
     @Override
     public List<Province> findAll() {
         return provinceRepository.findAll();

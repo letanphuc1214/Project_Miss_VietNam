@@ -15,6 +15,7 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     public BlogRepository blogRepository;
 
+    //admin blog deleted
     @Override
     public List<Blog> findAllBlogDeleted() {
         return blogRepository.findAllBlogDeleted();
@@ -49,15 +50,11 @@ public class BlogServiceImpl implements BlogService {
         return false;
     }
 
+    //Trang chủ
     @Override
     public List<Blog> listLastestBlogCarousel() {
         return blogRepository.listLastestBlogCarousel();
     }
-
-//    @Override
-//    public List<Blog> listBlogCarousel(Long sl) {
-//        return blogRepository.listBlogCarousel(sl);
-//    }
 
     @Override
     public List<Blog> listAllBlog() {
@@ -69,6 +66,8 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.blogView(id);
     }
 
+
+    //admin blog
     @Override
     public List<Blog> findAll() {
         return blogRepository.findAll();

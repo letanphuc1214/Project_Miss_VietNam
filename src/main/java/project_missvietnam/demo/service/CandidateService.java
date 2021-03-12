@@ -5,11 +5,17 @@ import project_missvietnam.demo.model.Candidate;
 import java.util.List;
 
 public interface CandidateService extends BaseService<Candidate>{
+
+    //admin candidate deleted
     List<Candidate> findAllCandidateDeleted();
+
     Candidate findCandidateDeleted(long id);
+
     boolean deleteCandidate(long id);
+
     boolean undoCandidate(long id);
 
+    //admin candidate
     List<Candidate> findAllCandidatesByPhoneEmailIdCard(String phone, String email, String idCard);
 
     List<Candidate> findAllCandidateStatusRemoved();

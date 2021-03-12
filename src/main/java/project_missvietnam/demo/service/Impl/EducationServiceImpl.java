@@ -19,6 +19,7 @@ public class EducationServiceImpl implements EducationService {
     @Autowired
     public CandidateRepository candidateRepository;
 
+    //admin education deleted
     @Override
     public List<Education> findAllEducationDeleted() {
         return educationRepository.findAllEducationDeleted();
@@ -52,6 +53,7 @@ public class EducationServiceImpl implements EducationService {
        return false;
     }
 
+    //Admin education
     @Override
     public List<Education> findAll() {
         return educationRepository.findAll();

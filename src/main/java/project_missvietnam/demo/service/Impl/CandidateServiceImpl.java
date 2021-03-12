@@ -15,7 +15,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     public CandidateRepository candidateRepository;
 
-    // Candidate delete
+    //Admin Candidate delete
     @Override
     public List<Candidate> findAllCandidateDeleted() {
         return candidateRepository.findAllCandidateDeleted();
@@ -55,7 +55,7 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateRepository.findAllCandidatesByPhoneEmailIdCard(phone, email, idCard);
     }
 
-    //danh sách tất thí sinh bị loại
+    //Trang chủ
     @Override
     public List<Candidate> findAllCandidateStatusRemoved() {
         return candidateRepository.findAllCandidateStatusRemoved();
@@ -97,7 +97,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
 
-    //Candidate
+    //admin Candidate
     @Override
     public List<Candidate> findAll() {
         return candidateRepository.findAll();
