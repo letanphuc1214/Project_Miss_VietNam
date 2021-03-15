@@ -1,7 +1,7 @@
 var blogs = {} || blogs;
 
 //Trang chủ: Hiển thị danh sách 8 bài viết
-//wife
+
 blogs.blogCarousel = function (){
     $.ajax({
         url: 'https://missvietnam.herokuapp.com/api/lastestBlogs/',
@@ -52,7 +52,7 @@ blogs.blogCarousel = function (){
 // }
 
 //Trang chủ: Hiển thị tất cả bài viết
-//Husband
+
 blogs.listBlog=function(data){
     $('#listBlog').html("");
     $.each(data, function (i, v) {

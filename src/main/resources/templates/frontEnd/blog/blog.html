@@ -122,12 +122,12 @@
 <script th:src="@{../ui-assets/pagination/pagination.js}"></script>
 <script th:src="@{../ui-assets/js/blog/blog.js}"></script>
 
-<!--tuesday-->
+
 <script>
     $('#pagination-blog').pagination({
         dataSource: function (done){
             $.ajax({
-                url: 'http://localhost:8080/api/newAllBlogs/',
+                url: 'https://missvietnam.herokuapp.com/api/newAllBlogs/',
                 method: 'GET',
                 dataType: 'json',
                 success: function (data){
